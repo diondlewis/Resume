@@ -271,6 +271,7 @@ $(document).click(function(loc) {
 	logClicks(x,y);
 });
 
+/*
 // this function formats my name to an international format
 // so that the Last name will appear in all caps
 function inName(name) {
@@ -283,5 +284,6 @@ function inName(name) {
 }
 
 $("#main").append(internationalizeButton);
+*/
 
 $("#mapDiv").append(googleMap);
