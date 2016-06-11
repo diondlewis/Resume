@@ -12,8 +12,8 @@ var bio = {
 	"welcomeMessage": "Greetings, you have definitely reached the page of a tech geek!",
 	"skills": ["Computer Networking", "HTML", "CSS", "Javascript", "Python", "Adobe Photoshop",
 	"Adobe Illustrator", "Logo Design"],
-	"bioPic": "images/me.jpg"
-}
+	"biopic": "images/me.jpg"
+};
 
 // this object contains info for the work experience section of my resume
 var work = {
@@ -63,27 +63,26 @@ var work = {
 			" Also designed Chicago's first parking garage map."
 		}
 	]
-}
+};
 
 
 // this object contains info for the projects section of my resume
 var projects = {
 	"projects": [
 		{
-			"title": "AT&T's Safety SPOC Program",
-			"dates": 2012,
-			"description":"At AT&T, I was asked to create this logo to help inspire excitement" +
-			"for AT&T's new saftey initiative.",
-			"images": ["images/safety.jpg"]
+			"title": "Portfolio",
+			"dates": "2016",
+			"description":"I used the framework bootstrap to put together this online portfolio for my web development projects. It's hosted by github.",
+			"images": ["images/portfolio.jpg"]
 		},
 		{
-			"title": "Lady Hurricanes Basketball Team Jersey Design",
-			"dates": 2011,
-			"description":"I designed the logo and jersey design for this girls basketball team. Go Hurricanes!",
-			"images": ["images/lady.jpg"]
+			"title": "Favorite Movies",
+			"dates": "2016",
+			"description":"I used object-oriented programming in Python to create this webpage. It plays trailers of my favorite movies.",
+			"images": ["images/movie.jpg"]
 		}
 	]
-}
+};
 
 // this object contains info for the education section  of the resume
 var education = {
@@ -91,8 +90,9 @@ var education = {
 		{
 			"name": "The American Academy of Art",
 			"city": "Chicago, Illinois",
-			"major": ["Graphic Design"],
+			"majors": ["Graphic Design"],
 			"dates": "2000 - 2002",
+			"degree": "None",
 			"url": "www.aaart.edu",
 			"location": "Chicago, IL"
 		},
@@ -101,36 +101,37 @@ var education = {
 	"onlineCourses": [
 		{
 			"title": "Intro to Programming Nanodegree",
-			"name": "Udacity",
-			"dates": 2016,
+			"school": "Udacity",
+			"date": "2016",
+			"url": "www.udacity.com"
+		},
+		{
+			"title": "Front-End Web Development Nanodegree",
+			"school": "Udacity",
+			"date": "2016",
 			"url": "www.udacity.com"
 		}
 	]
-}
+};
 
 
-// This function uses info from the bio object and
-// pins my name, role, picture and welcome message to the header of the webpage
-function header() {
+// This function uses info from the bio object and pins my name, role, picture,
+// contact info, skills and welcome message to the header of the webpage
+bio.display = function(){
+// pins my name, role and picture to the header
 	var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
 	$("#header").prepend(formattedRole);
 
 	var formattedName = HTMLheaderName.replace("%data%", bio.name);
 	$("#header").prepend(formattedName);
 
-	var bioPic = HTMLbioPic.replace("%data%", bio.bioPic);
+	var bioPic = HTMLbioPic.replace("%data%", bio.biopic);
 	$("#header").append(bioPic);
 
 	var message = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 	$("#header").append(message);
-}
 
-header();
-
-
-// the variables below use the strings in the helper.js file to input my info into the index.html file
-// displays my picyture on the page
-function contactInfo() {
+// pins my contact info to the top and bottom of the page
 	var contactsMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
 	$("#topContacts").append(contactsMobile);
 	$("#footerContacts").append(contactsMobile);
@@ -150,42 +151,24 @@ function contactInfo() {
 	var myLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 	$("#topContacts").append(myLocation);
 	$("#footerContacts").append(myLocation);
-}
-
-contactInfo();
-
-// this function pins a skills list to the top of the resume under the section skills at a glance
-function skills(){
+// pins a skills list to the top of the resume under the section skills at a glance
 	if (bio.skills.length > 0) {
 		$("#header").append(HTMLskillsStart);
-		var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-		$("#header").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-		$("#header").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-		$("#header").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-		$("#header").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
-		$("#header").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%", bio.skills[5]);
-		$("#header").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%", bio.skills[6]);
-		$("#header").append(formattedSkill);
-		formattedSkill = HTMLskills.replace("%data%", bio.skills[7]);
-		$("#header").append(formattedSkill);
-	}
-}
+    }
+    for (var i = 0; i < bio.skills.length; i ++) {
+        var formattedSkill = HTMLskills.replace("%data%", bio.skills[i]);
+        $("#skills").append(formattedSkill);
+    }
+};
 
-skills();
+bio.display();
 
-// $("#main").append(work["position"]);
 
 // this function uses the info from the work object and pins my work info
 // to the work experience section of the webpage
 work.display = function() {
-// function displayWork() {
 	for (job in work.jobs){
+		if (!work.jobs.hasOwnProperty(job)) continue;
 		// create new div for work experience
 		$("#workExperience").append(HTMLworkStart);
 		// concatenate employer and title
@@ -199,17 +182,20 @@ work.display = function() {
 
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 		$(".work-entry:last").append(formattedDescription);
-	}
-}
 
-//displayWork();
+		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		$(".work-entry:last").append(formattedLocation);
+	}
+};
+
 work.display();
+
 // this function uses the info from the project object and pins it to
 // the projects section of the webpage
 projects.display = function() {
 	for (project in projects.projects) {
+		if (!projects.projects.hasOwnProperty(project)) continue;
 		$("#projects").append(HTMLprojectStart);
-
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
 		$(".project-entry:last").append(formattedTitle);
 
@@ -218,9 +204,9 @@ projects.display = function() {
 
 		var formattedDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
 		$(".project-entry:last").append(formattedDescription);
-
 		if (projects.projects[project].images.length > 0) {
 			for (image in projects.projects[project].images) {
+				if (!projects.projects[project].images.hasOwnProperty(image)) continue;
 				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[project].images[image]);
 				$(".project-entry:last").append(formattedImage);
 			}
@@ -228,7 +214,7 @@ projects.display = function() {
 
 	}
 
-}
+};
 
 projects.display();
 
@@ -236,47 +222,53 @@ projects.display();
 // pins the college I attended to the education section of the webpage
 education.display = function() {
 	for (school in education.schools){
+		if (!education.schools.hasOwnProperty(school)) continue;
 		// create new div for education
 		$("#education").append(HTMLschoolStart);
+		$("#education").append(HTMLonlineClasses);
 		// formats school, dates and major
 		var formattedSchool = HTMLschoolName.replace("%data%", education.schools[school].name);
 		$(".education-entry").append(formattedSchool);
+
 		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 		$(".education-entry").append(formattedDates);
-		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+
+		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
 		$(".education-entry").append(formattedMajor);
+
+		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+		$(".education-entry").append(formattedLocation);
 	}
-}
 
-education.display();
-
-// this function uses info from the online part of the education object
-// and pins my udacity online class to the webpage
-function displayOnlineClass() {
+	// pins online classes to the education section of webpage
 	for (school in education.onlineCourses){
+		if (!education.onlineCourses.hasOwnProperty(school)) continue;
+		// create new div for education
+		$("#education").append(HTMLschoolStart);
+
 		var formattedClasses = HTMLonlineTitle.replace("%data%", education.onlineCourses[school].title);
-		var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[school].name);
-		// This line concantenates the online classes line with the school and course so that it formats
-		// correctly on the webpage
-		var formattedClassesSchool = HTMLonlineClasses + formattedClasses + formattedSchool;
+		var formattedOnlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[school].school);
+		// This line concantenates the school and course so that it formats correctly on the webpage
+		var formattedClassesSchool = formattedClasses + formattedOnlineSchool;
 		$(".education-entry:last").append(formattedClassesSchool);
 
-		var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[school].dates);
-		$(".education-entry:last").append(formattedDates);
+		var formattedDate = HTMLonlineDates.replace("%data%", education.onlineCourses[school].date);
+		$(".education-entry:last").append(formattedDate);
 
 		var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[school].url);
 		$(".education-entry:last").append(formattedURL);
 	}
-}
+};
 
-displayOnlineClass();
+education.display();
+
 
 // this function tracks the user clicks on the site by collecting the cursor locations
 $(document).click(function(loc) {
 	var x = loc.pageX;
 	var y = loc.pageY;
 
-	logClicks(x,y)
+	logClicks(x,y);
 });
 
 // this function formats my name to an international format
