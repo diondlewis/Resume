@@ -72,14 +72,20 @@ var projects = {
 		{
 			"title": "Portfolio",
 			"dates": "2016",
-			"description":"I used the framework bootstrap to put together this online portfolio for my web development projects. It's hosted by github.",
+			"description":"Developed a personal portfolio page using HTML, CSS, and the Bootstrap framework. The page is fully responsive and works on mobile, tablet, and desktop browsers.",
 			"images": ["images/portfolio.jpg"]
 		},
 		{
 			"title": "Favorite Movies",
 			"dates": "2016",
-			"description":"I used object-oriented programming in Python to create this webpage. It plays trailers of my favorite movies.",
+			"description":"Created a simple movie website with images and trailers, this project demonstrates knowledge of Object Oriented Programming.",
 			"images": ["images/movie.jpg"]
+		},
+		{
+			"title": "Classic Arcade Game",
+			"dates": "2016",
+			"description":"An HTML5 Canvas powered video game, developed using the best practices in Object Oriented JavaScript.",
+			"images": ["images/game.jpg"]
 		}
 	]
 };
