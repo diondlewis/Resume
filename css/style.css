@@ -158,6 +158,7 @@ a {
 /* TODO: Replace with image later */
 #header {
   background-color: #484848;
+  color: orange;
 }
 
 .flex-box {
