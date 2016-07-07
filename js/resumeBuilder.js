@@ -20,23 +20,16 @@ var work = {
 	"jobs": [
 		{
 			"employer": "AT&T",
-			"title": "Premises Technician",
+			"title": "Telecommunications Technician",
 			"location": "Mokena, Illinois",
-			"dates": "January 2009 - Present",
+			"dates": "May 2008 - Present",
 			"description": "Install and repair VoIP, Internet and IPTV services for business and residential customers."
-		},
-		{
-			"employer": "AT&T",
-			"title": "Cable Splicing Technician",
-			"location": "Addison, Illinois",
-			"dates": "February 2008 - January 2009",
-			"description": "Install, repair and splice outside copper wiring for data, telephone and internet services."
 		},
 		{
 			"employer": "DirecTV",
 			"title": "Satellite Technician",
 			"location": "Bedford Park, Illinois",
-			"dates": "July 2006 - February 2008",
+			"dates": "July 2006 - May 2008",
 			"description": "Installed and repaired Satellite TV services for business and residential customers."
 		},
 		{
