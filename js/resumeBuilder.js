@@ -23,7 +23,10 @@ var work = {
 			"title": "Telecommunications Technician",
 			"location": "Mokena, Illinois",
 			"dates": "May 2008 - Present",
-			"description": "Install and repair VoIP, Internet and IPTV services for business and residential customers."
+			"description": "Won AT&T's Customer Appreciation Award for outstanding customer service while installing and repairing VoIP, Internet and IPTV services for business and residential customers each quarter.",
+			"description": "Exceeded all company expectations by helping to bring our location's quality and efficiency average up to over 95%, resulting in receiving AT&T’s Employee Five Star Award multiple times.",
+			"description": "Received a Safety Award for going accident free and being appointed as the very first Safety SPOC (Single Point of Contact) to lead over 50 technicians with a new safety initiative including designing the logo to be used for AT&T's Safety SPOC Program.",
+			"description": "Honored with the President’s Volunteer Service Award multiple times for volunteer work with AT&T’s Employee Resource Groups. Volunteer experience includes graphic design, web development and teaching computer programming."
 		},
 		{
 			"employer": "DirecTV",
